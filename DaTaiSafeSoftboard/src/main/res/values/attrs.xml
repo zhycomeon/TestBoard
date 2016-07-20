@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    
+    <declare-styleable name="SoftKeyView">
+        <attr name="softBoardBgColor" format="reference|color" />
+        <attr name="keyNormalBgColor" format="reference|color" />
+        <attr name="keyPressedBgColor" format="reference|color" />
+        <attr name="keyShadowColor" format ="reference|color" />
+        <attr name="keyTextColor" format="reference|color" />
+        <attr name="keyTextSize" format="dimension" />
+        <attr name="keyborderColor" format="reference|color" />
+        <attr name="keyborderSize" format="dimension" />
+        <attr name="keyrandomPosition" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="EditTextType">
+        <attr name="inputType" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="PasswordView">
+
+        <attr name="pvTextColor" format="color|reference" />
+        <attr name="pvTextSize" format="dimension" />
+        <attr name="pvLineWidth" format="dimension" />
+        <attr name="pvLineColor" format="color" />
+        <attr name="pvBorderColor" format="color" />
+        <attr name="pvPasswordLength" format="integer" />
+
+    </declare-styleable>
+</resources>

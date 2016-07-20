@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gray_66929292">#66929292</color>
+    <color name="gray_cdcdcd">#cdcdcd</color>
+    <color name="gray_efeff4">#efeff4</color>
+
+    <color name="gray_888888">#ff888888</color>
+
+    <color name="text_content_black">#ff000000</color>
+
+    <color name="passwordview_textcolor_ff0000">#ffff0000</color>
+</resources>

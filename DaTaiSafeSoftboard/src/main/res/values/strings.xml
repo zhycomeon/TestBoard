@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DaTaiSafeSoftKeyboard</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="keyboard_name">大泰安全键盘</string>
+
+    <string name="business_format1">最小变动价为%1$.1f,涨停%2$.1f,跌停%3$.1f</string>
+    <string name="str_two_decimal_places">%.2f</string>
+</resources>
