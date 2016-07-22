@@ -411,80 +411,19 @@ public class SafeEdit extends EditText implements OnDismissListener,IUpdateEncod
 					if(mBusinessListener != null) {
 						mBusinessListener.doBusiness(this,BusinessType.BUSINESS_TYPE7);
 					}
-					/*
-					if(mType == 0){
-
-					}else if(mType == 2){
-						if (!TextUtils.isEmpty(inputStr.toString())) {
-							long current = Long.parseLong(inputStr.toString());
-							current += mMinUnit;
-							inputStr = inputStr.replace(0, inputStr.length(), String.valueOf(current));
-							setText(inputStr);
-							setSelection(inputStr.length());
-						}
-					}else if(mType == 1){
-						if (!TextUtils.isEmpty(inputStr.toString())) {
-							Double current = Double.parseDouble(inputStr.toString());
-							current += mMinUnit;
-							inputStr = inputStr.replace(0, inputStr.length(), String.valueOf(current));
-							setText(inputStr);
-							setSelection(inputStr.length());
-						}
-					}
-					*/
 					break;
 				case BUSINESS_TYPE8:
 
 					if(mBusinessListener != null) {
 						mBusinessListener.doBusiness(this,BusinessType.BUSINESS_TYPE8);
 					}
-					/*
-					if(mType == 0){
-
-					}else if(mType == 2){
-						if (!TextUtils.isEmpty(inputStr.toString())) {
-							long current = Long.parseLong(inputStr.toString());
-							if (current <=mMinUnit) {
-								current = 0;
-							} else {
-								current -= 1;
-							}
-							inputStr = inputStr.replace(0, inputStr.length(), String.valueOf(current));
-							setText(inputStr);
-							setSelection(inputStr.length());
-						}
-					}else if(mType == 1){
-						if (!TextUtils.isEmpty(inputStr.toString())) {
-							double current = Double.parseDouble(inputStr.toString());
-							if (current <= mMinUnit) {
-								current = 0;
-							} else {
-								current -= mMinUnit;
-							}
-
-							inputStr = inputStr.replace(0, inputStr.length(), String.valueOf(current));
-							setText(inputStr);
-							setSelection(inputStr.length());
-						}
-					}
-					*/
 					break;
 				case BUSINESS_TYPE9:
-//					if(mType == 0){
-//						if(!TextUtils.isEmpty(inputStr.toString())){
-//							inputStr.deleteCharAt(inputStr.length()-1);
-//							String desString = DESUtils.getInstance().encode(inputStr.toString());
-//							updateEncodeString(desString);
-//
-//							setText(desString.substring(0, inputStr.length()));
-//							setSelection(inputStr.length());
-//						}
-//					}else if(mType == 1 || mType == 2){
-						if(!TextUtils.isEmpty(inputStr.toString())){
-							setText(inputStr.deleteCharAt(inputStr.length()-1));
-							setSelection(inputStr.length());
-						}
-//					}
+
+					if(!TextUtils.isEmpty(inputStr.toString())){
+						setText(inputStr.deleteCharAt(inputStr.length()-1));
+						setSelection(inputStr.length());
+					}
 					break;
 			}
 

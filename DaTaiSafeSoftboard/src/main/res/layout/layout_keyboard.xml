@@ -116,7 +116,7 @@
             app:keyNormalBgColor="@android:color/white"
             app:keyPressedBgColor="#66929292"
             app:keyTextColor="@android:color/black"
-            app:keyTextSize="20sp"
+            app:keyTextSize="22sp"
             app:keyborderColor="#66929292"
             app:keyborderSize="1dp"
             app:keyShadowColor="@color/gray_888888"/>
@@ -129,7 +129,7 @@
             app:keyNormalBgColor="@android:color/white"
             app:keyPressedBgColor="#66929292"
             app:keyTextColor="@android:color/black"
-            app:keyTextSize="20sp"
+            app:keyTextSize="22sp"
             app:keyborderColor="#66929292"
             app:keyborderSize="1dp"
             app:keyShadowColor="@color/gray_888888"/>
@@ -142,7 +142,7 @@
             app:keyNormalBgColor="@android:color/white"
             app:keyPressedBgColor="#66929292"
             app:keyTextColor="@android:color/black"
-            app:keyTextSize="20sp"
+            app:keyTextSize="22sp"
             app:keyborderColor="#66929292"
             app:keyborderSize="1dp"
             app:keyShadowColor="@color/gray_888888"
