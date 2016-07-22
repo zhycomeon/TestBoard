@@ -36,7 +36,7 @@ public class BaseSoftKeyBoard extends PopupWindow implements
 	protected boolean isPendding=true;
 	protected int softKeyHeight;
 	protected int decorViewHeight;
-	protected StringBuilder inputStr;
+//	protected StringBuilder inputStr;
 
 	//
 	protected String desString = null;
@@ -81,21 +81,6 @@ public class BaseSoftKeyBoard extends PopupWindow implements
 			}
 			close();
 		}
-//		switch (v.getId()) {
-//		case R.id.softkeyBoard_colse:
-//			close();
-//			break;
-//		case R.id.softkeyBoard_switchType:
-////			if(inputTypeGroup.getVisibility()==View.VISIBLE){
-////				softKeyBoard_tip.setVisibility(View.VISIBLE);
-////				inputTypeGroup.setVisibility(View.GONE);
-////			}else{
-////				softKeyBoard_tip.setVisibility(View.GONE);
-////				inputTypeGroup.setVisibility(View.VISIBLE);
-////			}
-//
-//			break;
-//		}
 	}
 
 
@@ -106,7 +91,6 @@ public class BaseSoftKeyBoard extends PopupWindow implements
 		if(edit==null){
 			new IllegalAccessError("safeEdit is null refrence");
 		}
-		inputStr=new StringBuilder(edit.getText().toString());
 		showAsDropDown(decorView, 0, -getHeight());
 
 		//updateViewByMode(getInputType(edit));
@@ -164,13 +148,6 @@ public class BaseSoftKeyBoard extends PopupWindow implements
 	
 	@Override
 	public void onPressed(SoftKey softKey) {
-//		if(edit!=null){
-//			inputStr.append(softKey.getText());
-//			String oriStr = inputStr.toString();
-//			edit.setText(oriStr);
-//			edit.setSelection(inputStr.length());
-//
-//		}
 		if(edit != null) {
 			edit.processKeyValue(BusinessType.BUSINESS_TYPE6, softKey.getText());
 		}
@@ -178,10 +155,6 @@ public class BaseSoftKeyBoard extends PopupWindow implements
 
 	@Override
 	public void onDeleted() {
-//		if(edit!=null&&(!TextUtils.isEmpty(inputStr.toString()))){
-//			edit.setText(inputStr.deleteCharAt(inputStr.length()-1));
-//			edit.setSelection(inputStr.length());
-//		}
 
 		if (edit != null) {
 			edit.processKeyValue(BusinessType.BUSINESS_TYPE9, "");
@@ -245,16 +218,6 @@ public class BaseSoftKeyBoard extends PopupWindow implements
 
 	public int getDecorViewHeight(){
 		return decorViewHeight;
-	}
-
-	public void openDefaulSoftKeyboard(){
-		InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.showSoftInput(edit, InputMethodManager.RESULT_SHOWN);
-		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
-				InputMethodManager.HIDE_IMPLICIT_ONLY);
-//		if(edit != null){
-//			edit.setText("");
-//		}
 	}
 
 	public void setBusinessTips(String businessStr) {

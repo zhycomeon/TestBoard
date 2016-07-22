@@ -64,9 +64,12 @@ public class MainActivity extends AppCompatActivity implements IBusinessProcess,
         spec3SafeEdit.setBusinessTipsListener(this);
 //        spec2SafeEdit.setMinUnit(3);
 
+        SafeEdit moneyPwd = (SafeEdit)findViewById(R.id.test_test);
+        moneyPwd.setBusinessTipsListener(this);
+
         final SafeEdit safeEdit = (SafeEdit) findViewById(R.id.test);
         safeEdit.setRootView(root);
-
+//        safeEdit.onTouchEvent(MotionEvent.obtain(0,0,MotionEvent.ACTION_UP,0,0,0));
 
         Button btn = (Button) findViewById(R.id.commit);
 //        btn.setOnClickListener(new View.OnClickListener() {

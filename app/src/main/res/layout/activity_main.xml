@@ -28,7 +28,19 @@
         android:background="#00ff00"
         android:layout_margin="0dp"
         android:layout_below="@id/input_password"
-        ></LinearLayout>
+        >
+        <com.datai.safesoftboard.SafeEdit
+            android:id="@+id/test_test"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/topView"
+            android:inputType="numberPassword"
+            android:maxLength="8"
+            datai:inputType="4"
+            android:background="@android:color/white"
+
+            />
+    </LinearLayout>
     <com.datai.safesoftboard.SafeEdit
         android:id="@+id/test1"
         android:layout_width="match_parent"

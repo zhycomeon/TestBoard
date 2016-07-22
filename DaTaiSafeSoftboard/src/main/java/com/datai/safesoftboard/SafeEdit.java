@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -30,6 +31,7 @@ import com.datai.safesoftboard.interfaces.IBusinessProcess;
 import com.datai.safesoftboard.interfaces.IBusinessTips;
 import com.datai.safesoftboard.interfaces.IUpdateEncodeStr;
 
+import java.lang.reflect.Field;
 import java.text.DecimalFormat;
 
 
@@ -47,7 +49,7 @@ public class SafeEdit extends EditText implements OnDismissListener,IUpdateEncod
 	protected StringBuilder inputStr;
 
 	private  float mMinUnit = 1;
-
+	private int mMaxLength;
 	private boolean bOpenSystemInput = false;
 	/*
 		mType: 0 代表输入密码的安全键盘；1 达标输入手数的键盘 ;2代表输入价格的键盘
@@ -80,6 +82,7 @@ public class SafeEdit extends EditText implements OnDismissListener,IUpdateEncod
 
 		mType = ta.getInteger(R.styleable.EditTextType_inputType,0);
 		//addTextChangedListener(new EditChangedListener());
+		mMaxLength = getMaxLength();
 	}
 
 	
@@ -121,6 +124,11 @@ public class SafeEdit extends EditText implements OnDismissListener,IUpdateEncod
 								break;
 							case 3:
 								softKeyBoard=SoftKeyBoardManager.getSoftKeyBoard(getContext(),mType);//new Spec2SoftKeyBoard(getContext());
+								inputStr.replace(0,inputStr.length(),getText().toString());
+								mEncodeStr.delete(0,mEncodeStr.length());
+								break;
+							case 4:
+								softKeyBoard =SoftKeyBoardManager.getSoftKeyBoard(getContext(),mType);
 								inputStr.replace(0,inputStr.length(),getText().toString());
 								mEncodeStr.delete(0,mEncodeStr.length());
 								break;
@@ -211,7 +219,8 @@ public class SafeEdit extends EditText implements OnDismissListener,IUpdateEncod
 		return mType;
 	}
 	private void showAnimator( ){
-
+		if(mRootView == null)
+			return ;
 		ValueAnimator valueAnimator = ValueAnimator.ofInt(0,mMarginTop);
 		valueAnimator.setDuration(100);
 
@@ -246,36 +255,38 @@ public class SafeEdit extends EditText implements OnDismissListener,IUpdateEncod
 	}
 
 	private void hideAnimator(){
-			ValueAnimator valueAnimator = ValueAnimator.ofInt(0,mMarginTop);
-			valueAnimator.setDuration(100);
-			//valueAnimator.setTarget(mRootView);
-			valueAnimator.setInterpolator(new LinearInterpolator());
+		if(mRootView == null)
+			return ;
+		ValueAnimator valueAnimator = ValueAnimator.ofInt(0,mMarginTop);
+		valueAnimator.setDuration(100);
+		//valueAnimator.setTarget(mRootView);
+		valueAnimator.setInterpolator(new LinearInterpolator());
 
-			valueAnimator.setEvaluator(new TypeEvaluator<Integer>()
+		valueAnimator.setEvaluator(new TypeEvaluator<Integer>()
+		{
+			// fraction = t / duration
+			@Override
+			public Integer evaluate(float fraction, Integer startValue,
+									Integer endValue)
 			{
-				// fraction = t / duration
-				@Override
-				public Integer evaluate(float fraction, Integer startValue,
-										Integer endValue)
-				{
-					return (int)(-mMarginTop*(1-fraction));
-				}
-			});
-			valueAnimator.start();
+				return (int)(-mMarginTop*(1-fraction));
+			}
+		});
+		valueAnimator.start();
 
 
-			valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+		valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+		{
+			@Override
+			public void onAnimationUpdate(ValueAnimator animation)
 			{
-				@Override
-				public void onAnimationUpdate(ValueAnimator animation)
-				{
-					int top = (Integer)animation.getAnimatedValue();
-					ViewGroup.MarginLayoutParams params =(ViewGroup.MarginLayoutParams) mRootView.getLayoutParams();
-					params.topMargin = top;
-					mRootView.setLayoutParams(params);
-				}
-			});
-		}
+				int top = (Integer)animation.getAnimatedValue();
+				ViewGroup.MarginLayoutParams params =(ViewGroup.MarginLayoutParams) mRootView.getLayoutParams();
+				params.topMargin = top;
+				mRootView.setLayoutParams(params);
+			}
+		});
+	}
 
 	@Override
 	public void updateEncodeString(String encodeStr) {
@@ -337,7 +348,9 @@ public class SafeEdit extends EditText implements OnDismissListener,IUpdateEncod
 					if(TextUtils.isEmpty(keyValue)){
 						break;
 					}
-					if(mType == 0){
+					if(mType == 0 || mType == 4){
+						if(inputStr.length()>=mMaxLength)
+							return ;
 						inputStr.append(keyValue);
 						String oriStr = inputStr.toString();
 //						String desString = DESUtils.getInstance().encode(oriStr);
@@ -350,7 +363,8 @@ public class SafeEdit extends EditText implements OnDismissListener,IUpdateEncod
 						if(inputStr.length()==0 && (keyValue.equalsIgnoreCase("00")|| keyValue.equalsIgnoreCase("0"))){
 							return ;
 						}
-
+						if(inputStr.length()>=mMaxLength)
+							return ;
 						if(inputStr.toString().equals("0")){
 							inputStr.delete(0,inputStr.length());
 							inputStr.append(keyValue);
@@ -361,6 +375,8 @@ public class SafeEdit extends EditText implements OnDismissListener,IUpdateEncod
 						setSelection(inputStr.length());
 
 					}else if(mType == 2){
+						if(inputStr.length()>=mMaxLength)
+							return ;
 						if(!keyValue.equalsIgnoreCase(".")) {
 //							if(inputStr.toString().contains(".") && (inputStr.indexOf(".")+3) == inputStr.length()){
 //								break;
@@ -377,6 +393,8 @@ public class SafeEdit extends EditText implements OnDismissListener,IUpdateEncod
 							}
 						}
 					}else if(mType == 3){
+						if(inputStr.length()>=mMaxLength)
+							return ;
 						if(!keyValue.equals("0") && !keyValue.equals(".")){
 							inputStr.append(keyValue);
 						} else if(keyValue.equals(".") && (inputStr.length() > 0 && !inputStr.toString().contains("."))){
@@ -481,5 +499,35 @@ public class SafeEdit extends EditText implements OnDismissListener,IUpdateEncod
 		}
 	}
 
+	public int getMaxLength()
+	{
+		int length =0;
+		try
+		{
+			InputFilter[] inputFilters = getFilters();
+			for(InputFilter filter:inputFilters)
+			{
+				Class<?> c = filter.getClass();
+				if(c.getName().equals("android.text.InputFilter$LengthFilter"))
+				{
+					Field[] f = c.getDeclaredFields();
+					for(Field field:f)
+					{
+						if(field.getName().equals("mMax"))
+						{
+							field.setAccessible(true);
+							length = (Integer)field.get(filter);
+						}
+					}
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		mMaxLength = length;
+		return length;
+	}
 
 }

@@ -67,30 +67,7 @@ public class Spec1SoftKeyBoard extends BaseSoftKeyBoard{
 	}
 
 	@Override
-	public void onPressed(SoftKey softKey) {
-//		if(edit!=null){
-//			if(inputStr.length()==0 && (softKey.getText().equalsIgnoreCase("00")|| softKey.getText().equalsIgnoreCase("0"))){
-//				return ;
-//			}
-//			inputStr.append(softKey.getText());
-//			String oriStr = inputStr.toString();
-//			edit.setText(oriStr);
-//			edit.setSelection(inputStr.length());
-
-//		}
-		super.onPressed(softKey);
-	}
-
-	@Override
     public void onJMEAdd() {
-//        if (edit != null && (!TextUtils.isEmpty(inputStr.toString()))) {
-//            long current = Long.parseLong(edit.getText().toString());
-//            current += 1;
-//            inputStr = inputStr.replace(0, inputStr.length(), String.valueOf(current));
-//            edit.setText(inputStr);
-//            edit.setSelection(inputStr.length());
-//        }
-
 		if (edit != null) {
 			edit.processKeyValue(BusinessType.BUSINESS_TYPE7, "");
 		}
@@ -98,17 +75,6 @@ public class Spec1SoftKeyBoard extends BaseSoftKeyBoard{
 
     @Override
     public void onJMEMin() {
-//        if (edit != null && (!TextUtils.isEmpty(inputStr.toString()))) {
-//            long current = Long.parseLong(edit.getText().toString());
-//            if (current == 0) {
-//                current = 0;
-//            } else {
-//                current -= 1;
-//            }
-//            inputStr = inputStr.replace(0, inputStr.length(), String.valueOf(current));
-//            edit.setText(inputStr);
-//            edit.setSelection(inputStr.length());
-//        }
 		if (edit != null) {
 			edit.processKeyValue(BusinessType.BUSINESS_TYPE8, "");
 		}

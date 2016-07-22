@@ -116,11 +116,7 @@ public class SafeSoftKeyBoard extends BaseSoftKeyBoard implements
 	 * 显示输入法
 	 */
 	public void show(){
-		if(edit==null){
-			new IllegalAccessError("safeEdit is null refrence");
-		}
-		inputStr=new StringBuilder(edit.getText().toString());
-		showAsDropDown(decorView, 0, -getHeight());
+		super.show();
 		inputTypeGroup.check(mapCheckedIdByMode(getInputType(edit)));
 		//updateViewByMode(getInputType(edit));
 	}
@@ -205,36 +201,6 @@ public class SafeSoftKeyBoard extends BaseSoftKeyBoard implements
 		}
 		
 	};
-	
-	@Override
-	public void onPressed(SoftKey softKey) {
-//		if(edit!=null){
-//			inputStr.append(softKey.getText());
-//			String oriStr = inputStr.toString();
-//			desString = DESUtils.getInstance().encode(oriStr);
-//			edit.updateEncodeString(desString);
-//
-//			String desStr = DESUtils.getInstance().decode(desString);
-//			edit.setText(desString.substring(0, inputStr.length()));
-//			edit.setSelection(inputStr.length());
-//
-//		}
-		super.onPressed(softKey);
-	}
-
-	@Override
-	public void onDeleted() {
-//		if(edit!=null&&(!TextUtils.isEmpty(inputStr.toString()))){
-//			inputStr.deleteCharAt(inputStr.length()-1);
-//			desString = DESUtils.getInstance().encode(inputStr.toString());
-			//edit.updateEncodeString(desString);
-//
-//			String desStr = DESUtils.getInstance().decode(desString);
-//			edit.setText(desString.substring(0, inputStr.length()));
-//		}
-
-		super.onDeleted();
-	}
 
     @Override
     public void onConfirm() {

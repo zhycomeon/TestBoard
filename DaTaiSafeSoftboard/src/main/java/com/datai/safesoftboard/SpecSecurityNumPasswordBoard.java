@@ -63,9 +63,8 @@ public class SpecSecurityNumPasswordBoard extends BaseSoftKeyBoard {
 
 	@Override
 	public void show() {
-		showAsDropDown(decorView, 0, -getHeight());
-//		showAtLocation(decorView, Gravity.CENTER,0,-getHeight());
-//		showAsDropDown(decorView, 0, 0);
+		super.show();
+//		showAsDropDown(decorView, 0, -getHeight());
 	}
 
 	@Override
@@ -77,16 +76,24 @@ public class SpecSecurityNumPasswordBoard extends BaseSoftKeyBoard {
 
 	@Override
 	public void onPressed(SoftKey softKey) {
-		if(mListener != null){
-			mListener.getKeyValue(softKey.getText());
+		if(edit != null){
+			super.onPressed(softKey);
+		}else {
+			if (mListener != null) {
+				mListener.getKeyValue(softKey.getText());
+			}
 		}
 	}
 
 
 	@Override
 	public void onDeleted() {
-		if(mListener != null){
-			mListener.delete();
+		if(edit != null){
+			super.onDeleted();
+		}else {
+			if (mListener != null) {
+				mListener.delete();
+			}
 		}
 	}
 
@@ -94,8 +101,4 @@ public class SpecSecurityNumPasswordBoard extends BaseSoftKeyBoard {
 		mListener = listener;
 	}
 
-	@Override
-	public void dismiss() {
-		super.dismiss();
-	}
 }
