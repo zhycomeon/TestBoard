@@ -1,6 +1,6 @@
 package com.datai.safesoftboard.interfaces;
 
-import com.datai.safesoftboard.SoftKey;
+import com.datai.safesoftboard.key.SoftKey;
 
 public interface SoftKeyStatusListener {
 

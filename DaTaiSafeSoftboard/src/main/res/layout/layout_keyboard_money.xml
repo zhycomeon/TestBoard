@@ -64,7 +64,7 @@
         android:layout_height="200dp"
         android:layout_weight="1" >
 
-        <com.datai.safesoftboard.SoftKeyMoneyNumLayView
+        <com.datai.safesoftboard.keyboardview.SoftKeyMoneyNumLayView
             android:id="@+id/keyBoard_Number_money"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

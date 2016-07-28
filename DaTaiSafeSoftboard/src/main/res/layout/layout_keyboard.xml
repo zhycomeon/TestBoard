@@ -108,7 +108,7 @@
         android:layout_height="200dp"
         android:layout_weight="1" >
 
-        <com.datai.safesoftboard.SoftKeyPunctLayView
+        <com.datai.safesoftboard.keyboardview.SoftKeyPunctLayView
             android:id="@+id/softkeyBoard_Punct"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -121,7 +121,7 @@
             app:keyborderSize="1dp"
             app:keyShadowColor="@color/gray_888888"/>
 
-        <com.datai.safesoftboard.SoftKeyAzLayView
+        <com.datai.safesoftboard.keyboardview.SoftKeyAzLayView
             android:id="@+id/softkeyBoard_Az"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -134,7 +134,7 @@
             app:keyborderSize="1dp"
             app:keyShadowColor="@color/gray_888888"/>
 
-        <com.datai.safesoftboard.SoftKeyNumLayView
+        <com.datai.safesoftboard.keyboardview.SoftKeyNumLayView
             android:id="@+id/softkeyBoard_Number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

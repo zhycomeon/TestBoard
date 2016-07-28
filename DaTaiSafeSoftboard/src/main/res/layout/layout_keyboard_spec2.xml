@@ -63,7 +63,7 @@
         android:layout_height="200dp"
         android:layout_weight="1" >
 
-        <com.datai.safesoftboard.SoftKeySpec2NumLayView
+        <com.datai.safesoftboard.keyboardview.SoftKeySpec2NumLayView
             android:id="@+id/keyBoard_Number_spec2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

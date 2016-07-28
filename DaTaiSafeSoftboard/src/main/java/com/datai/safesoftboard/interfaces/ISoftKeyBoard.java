@@ -3,7 +3,7 @@ package com.datai.safesoftboard.interfaces;
 import android.graphics.Canvas;
 import android.view.View;
 
-import com.datai.safesoftboard.SoftKey;
+import com.datai.safesoftboard.key.SoftKey;
 
 public interface ISoftKeyBoard extends View.OnTouchListener,ISoftKeyEvent{
 

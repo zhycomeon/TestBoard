@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.test.MainActivity"
     android:id="@+id/root">
-    <com.datai.safesoftboard.SecurityPassword
+    <com.datai.safesoftboard.view.SecurityPassword
         android:id="@+id/input_password"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         datai:pvLineColor="@android:color/darker_gray"
         datai:pvLineWidth="1dp"
         android:clickable="true"
-        android:background="@drawable/input_area"></com.datai.safesoftboard.SecurityPassword>
+        android:background="@drawable/input_area"></com.datai.safesoftboard.view.SecurityPassword>
     <LinearLayout android:id="@+id/topView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -29,7 +29,7 @@
         android:layout_margin="0dp"
         android:layout_below="@id/input_password"
         >
-        <com.datai.safesoftboard.SafeEdit
+        <com.datai.safesoftboard.view.SafeEdit
             android:id="@+id/test_test"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -41,7 +41,7 @@
 
             />
     </LinearLayout>
-    <com.datai.safesoftboard.SafeEdit
+    <com.datai.safesoftboard.view.SafeEdit
         android:id="@+id/test1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -59,7 +59,7 @@
         android:layout_below="@id/test1"
         android:layout_margin="0dp"></LinearLayout>
 
-    <com.datai.safesoftboard.SafeEdit
+    <com.datai.safesoftboard.view.SafeEdit
         android:id="@+id/test2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -74,7 +74,8 @@
         android:orientation="vertical"
         android:background="#0000ff"
         android:layout_below="@id/test2"></LinearLayout>
-    <com.datai.safesoftboard.SafeEdit  android:id="@+id/test3"
+    <com.datai.safesoftboard.view.SafeEdit
+        android:id="@+id/test3"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@id/thirdView"
@@ -87,7 +88,7 @@
         android:orientation="vertical"
         android:background="#00ffff"
         android:layout_below="@id/test3"></LinearLayout>
-    <com.datai.safesoftboard.SafeEdit
+    <com.datai.safesoftboard.view.SafeEdit
         android:id="@+id/test"
         android:layout_width="match_parent"
         android:layout_height="40dp"

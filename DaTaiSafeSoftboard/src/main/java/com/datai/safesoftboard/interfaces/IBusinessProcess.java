@@ -1,9 +1,7 @@
 package com.datai.safesoftboard.interfaces;
 
-import android.view.View;
-
 import com.datai.safesoftboard.BusinessType;
-import com.datai.safesoftboard.SafeEdit;
+import com.datai.safesoftboard.view.SafeEdit;
 
 public interface IBusinessProcess {
 

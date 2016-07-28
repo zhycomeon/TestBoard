@@ -1,25 +1,19 @@
 package com.example.test;
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.datai.safesoftboard.BaseSoftKeyBoard;
 import com.datai.safesoftboard.BusinessType;
-import com.datai.safesoftboard.SafeEdit;
-import com.datai.safesoftboard.SecurityPassword;
-import com.datai.safesoftboard.SoftKeyBoardManager;
-import com.datai.safesoftboard.SpecSecurityNumPasswordBoard;
-import com.datai.safesoftboard.Utils.DESUtils;
+import com.datai.safesoftboard.view.SafeEdit;
+import com.datai.safesoftboard.view.SecurityPassword;
+import com.datai.safesoftboard.keyboard.SoftKeyBoardManager;
+import com.datai.safesoftboard.keyboard.SpecSecurityNumPasswordBoard;
 import com.datai.safesoftboard.interfaces.IBusinessProcess;
 import com.datai.safesoftboard.interfaces.IBusinessTips;
 import com.datai.safesoftboard.interfaces.IInputComplete;
