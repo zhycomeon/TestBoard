@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements IBusinessProcess,
         root = (RelativeLayout) findViewById(R.id.root);
 
         spec1SafeEdit = (SafeEdit) findViewById(R.id.test1);
-        spec1SafeEdit.setText("");
+        spec1SafeEdit.setText("0");
         spec1SafeEdit.setRootView(root);
         spec1SafeEdit.setBusinessListener(this);
         spec1SafeEdit.setBusinessTipsListener(this);
@@ -120,24 +120,24 @@ public class MainActivity extends AppCompatActivity implements IBusinessProcess,
     public void doBusiness(SafeEdit edit, BusinessType type) {
 
         switch (type) {
-            case BUSINESS_TYPE1:
+            case BUSINESS_TYPE_ALL:
 
                 break;
-            case BUSINESS_TYPE2:
+            case BUSINESS_TYPE_HALF:
 
                 break;
-            case BUSINESS_TYPE3:
+            case BUSINESS_TYPE_ONETHIRD:
 
                 break;
-            case BUSINESS_TYPE4:
+            case BUSINESS_TYPE_TWOTHIRD:
 
                 break;
-            case BUSINESS_TYPE5:
+            case BUSINESS_TYPE_ONEFOURTH:
 
                 break;
-            case BUSINESS_TYPE6:
+            case BUSINESS_TYPE_KEYVALUE:
                 break;
-            case BUSINESS_TYPE7: {
+            case BUSINESS_TYPE_INCREASE: {
                 int eType = edit.getType();
                 switch (edit.getId()) {
 
@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements IBusinessProcess,
                 }
             }
             break;
-            case BUSINESS_TYPE8: {
+            case BUSINESS_TYPE_DECREASE: {
                 switch (edit.getId()) {
                     case R.id.test1:
                         long amountValue = 0;

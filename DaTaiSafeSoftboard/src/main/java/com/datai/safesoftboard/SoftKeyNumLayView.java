@@ -120,15 +120,6 @@ public class SoftKeyNumLayView extends SoftKeyView {
 		//画软键盘的删除按钮
 		drawSoftKey(canvas,delBtn);
 
-        //画第10个数字按钮
-        //drawSoftKey(canvas, softKeys[softKeys.length - 1]);
-//        SoftKey key10 = softKeys[softKeys.length - 1];
-//        key10.setHeight(blockHeight);
-//        key10.setWidth(blockWidth);
-//        key10.setX(blockWidth / 2 + ((col - 3) % col) * blockWidth);
-//        key10.setY(blockHeight / 2 + ((row - 2) % row) * blockHeight);
-//        drawSoftKey(canvas, key10);
-
         if (confirmBtn == null) {
             confirmBtn = new SoftKey();
             confirmBtn.setText("确定");
@@ -140,29 +131,6 @@ public class SoftKeyNumLayView extends SoftKeyView {
 
         drawSoftKey(canvas, confirmBtn);
 
-//        if (mKeyAdd == null) {
-//            mKeyAdd = new SoftKey();
-//            mKeyAdd.setText("+");
-//            mKeyAdd.setHeight(blockHeight * 2);
-//            mKeyAdd.setWidth(blockWidth);
-//            mKeyAdd.setX(blockWidth / 2 + ((col - 1) % col) * blockWidth);
-//            mKeyAdd.setY(blockHeight);
-//        }
-//
-//        drawSoftKey(canvas, mKeyAdd);
-//
-//        if (mKeyMin == null) {
-//            mKeyMin = new SoftKey();
-//            mKeyMin.setText("-");
-//            mKeyMin.setHeight(blockHeight * 2);
-//            mKeyMin.setWidth(blockWidth);
-//            mKeyMin.setX(blockWidth / 2 + ((col - 1) % col) * blockWidth);
-//            mKeyMin.setY(blockHeight + ((row - 3) % row) * blockHeight);
-//        }
-//
-//        drawSoftKey(canvas, mKeyMin);
-
-//        drawHold(canvas);
     }
 
     private void drawHold(Canvas canvas) {

@@ -178,7 +178,7 @@ public class SoftKeyAzLayView extends SoftKeyView{
 
 		//第二行9个字符按钮
 		for(int index=OneCol;index<OneCol+twoCol;index++){
-			softKeys[index].setX((index-(OneCol-1))*blockWidth);
+			softKeys[index].setX((index-(OneCol-1))* blockWidth);
 			softKeys[index].setY(blockHeight*3/2);
 			softKeys[index].setWidth(blockWidth - gapWidth*2);
 			softKeys[index].setHeight(blockHeight - gapHeight*2);

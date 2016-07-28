@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DaTaiSafeSoftboard/DaTaiSafeSoftboard.iml" filepath="$PROJECT_DIR$/DaTaiSafeSoftboard/DaTaiSafeSoftboard.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DaTaiSafeSoftboard/DaiTaiSafeSoftboard.iml" filepath="$PROJECT_DIR$/DaTaiSafeSoftboard/DaiTaiSafeSoftboard.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Test.iml" filepath="$PROJECT_DIR$/Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TestBoard.iml" filepath="$PROJECT_DIR$/TestBoard.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

@@ -6,5 +6,4 @@ public interface IBusinessTips {
 
 	 String getBusinessTips(View edit);
 
-//	float getBusinessMinUnit();
 }

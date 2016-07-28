@@ -15,7 +15,7 @@
     </declare-styleable>
 
     <declare-styleable name="EditTextType">
-        <attr name="inputType" format="integer"/>
+	<attr name="inputType" format="integer"/>
     </declare-styleable>
 
     <declare-styleable name="PasswordView">

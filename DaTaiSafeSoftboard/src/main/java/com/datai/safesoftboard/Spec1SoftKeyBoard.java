@@ -69,21 +69,21 @@ public class Spec1SoftKeyBoard extends BaseSoftKeyBoard{
 	@Override
     public void onJMEAdd() {
 		if (edit != null) {
-			edit.processKeyValue(BusinessType.BUSINESS_TYPE7, "");
+			edit.processKeyValue(BusinessType.BUSINESS_TYPE_INCREASE, "");
 		}
     }
 
     @Override
     public void onJMEMin() {
 		if (edit != null) {
-			edit.processKeyValue(BusinessType.BUSINESS_TYPE8, "");
+			edit.processKeyValue(BusinessType.BUSINESS_TYPE_DECREASE, "");
 		}
     }
 
 	@Override
 	public void onConfirm() {
 		if(edit != null) {
-			edit.processKeyValue(BusinessType.BUSINESS_TYPE0,"");
+			edit.processKeyValue(BusinessType.BUSINESS_TYPE_DEFAULT,"");
 		}
 		super.onConfirm();
 	}
@@ -91,35 +91,35 @@ public class Spec1SoftKeyBoard extends BaseSoftKeyBoard{
 	@Override
 	public void onAllPosition() {
 		if(edit != null) {
-			edit.processKeyValue(BusinessType.BUSINESS_TYPE1,"");
+			edit.processKeyValue(BusinessType.BUSINESS_TYPE_ALL,"");
 		}
 	}
 
 	@Override
 	public void onHalfPosition() {
 		if(edit != null) {
-			edit.processKeyValue(BusinessType.BUSINESS_TYPE2,"");
+			edit.processKeyValue(BusinessType.BUSINESS_TYPE_HALF,"");
 		}
 	}
 
 	@Override
 	public void onOneThirdsPosition() {
 		if(edit != null) {
-			edit.processKeyValue(BusinessType.BUSINESS_TYPE3,"");
+			edit.processKeyValue(BusinessType.BUSINESS_TYPE_ONETHIRD,"");
 		}
 	}
 
 	@Override
 	public void onTwoThirdsPosition() {
 		if(edit != null) {
-			edit.processKeyValue(BusinessType.BUSINESS_TYPE4,"");
+			edit.processKeyValue(BusinessType.BUSINESS_TYPE_TWOTHIRD,"");
 		}
 	}
 
 	@Override
 	public void onOneFourthsPosition() {
 		if(edit != null) {
-			edit.processKeyValue(BusinessType.BUSINESS_TYPE5,"");
+			edit.processKeyValue(BusinessType.BUSINESS_TYPE_ONEFOURTH,"");
 		}
 	}
 }

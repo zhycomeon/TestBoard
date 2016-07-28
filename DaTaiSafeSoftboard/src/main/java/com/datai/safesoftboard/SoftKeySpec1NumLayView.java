@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 
 
-
 /**
  * 数字键盘布局
  */
@@ -25,125 +24,92 @@ public class SoftKeySpec1NumLayView extends SoftKeyView {
     private SoftKey mKeyHold4;
     private SoftKey mKeyHold5;
 
-	public SoftKeySpec1NumLayView(Context context) {
-		this(context, null);
-	}
+    public SoftKeySpec1NumLayView(Context context) {
+        this(context, null);
+    }
 
-	public SoftKeySpec1NumLayView(Context context, AttributeSet attrs) {
-		this(context, attrs,0);
-	}
+    public SoftKeySpec1NumLayView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
 
-	public SoftKeySpec1NumLayView(Context context, AttributeSet attrs, int defStyleAttr) {
-		super(context, attrs, defStyleAttr);
-	}
+    public SoftKeySpec1NumLayView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
 
-	@Override
-	public SoftKey[] initSoftKeys() {
-		SoftKey[] result = new SoftKey[11];
-		for (int i = 0; i < result.length; i++) {
-			SoftKey btn = new SoftKey();
-            if(i == result.length-1){
+    @Override
+    public SoftKey[] initSoftKeys() {
+        SoftKey[] result = new SoftKey[11];
+        for (int i = 0; i < result.length; i++) {
+            SoftKey btn = new SoftKey();
+            if (i == result.length - 1) {
                 btn.setText("00");
-            }else {
+            } else {
                 btn.setText(String.valueOf(i));
             }
-			result[i] = btn;
-		}
-		return result;
-	}
+            result[i] = btn;
+        }
+        return result;
+    }
 
     @Override
     public SoftKey[] measureSoftKeysPos(SoftKey[] softKeys) {
         for (int i = 1; i < softKeys.length; i++) {
-            softKeys[i].setX(blockWidth / 2 + ((i-1) % (col - 1)) * blockWidth);
-            softKeys[i].setY(blockHeight / 2 + ((i-1) / (col - 1) % row) * blockHeight);
-            softKeys[i].setWidth(blockWidth - 2*gapWidth);
-            softKeys[i].setHeight(blockHeight - 2*gapHeight);
+            softKeys[i].setX(blockWidth / 2 + ((i - 1) % (col - 1)) * blockWidth);
+            softKeys[i].setY(blockHeight / 2 + ((i - 1) / (col - 1) % row) * blockHeight);
+            softKeys[i].setWidth(blockWidth - 2 * gapWidth);
+            softKeys[i].setHeight(blockHeight - 2 * gapHeight);
         }
 
         softKeys[0].setX(blockWidth / 2 + blockWidth);
         softKeys[0].setY(blockHeight / 2 + 3 * blockHeight);
-        softKeys[0].setWidth(blockWidth - 2*gapWidth);
-        softKeys[0].setHeight(blockHeight - 2*gapHeight);
+        softKeys[0].setWidth(blockWidth - 2 * gapWidth);
+        softKeys[0].setHeight(blockHeight - 2 * gapHeight);
         return softKeys;
     }
 
-	@Override
-	public int measureBlockWidth(int keyBoardwidth) {
-		return keyBoardwidth/col;
-	}
+    @Override
+    public int measureBlockWidth(int keyBoardwidth) {
+        return keyBoardwidth / col;
+    }
 
-	@Override
-	public int measureBlockHeight(int keyBoardHeight) {
-		return keyBoardHeight/row;
-	}
+    @Override
+    public int measureBlockHeight(int keyBoardHeight) {
+        return keyBoardHeight / row;
+    }
 
-	@Override
-	public void drawSoftKeysPos(Canvas canvas, SoftKey[] softKeys) {
-		if (softKeys == null) {
-			return ;
-		}
+    @Override
+    public void drawSoftKeysPos(Canvas canvas, SoftKey[] softKeys) {
+        if (softKeys == null) {
+            return;
+        }
 
-		canvas.drawColor(0xffcccccc);
-		//画垂直分割线
-//		for (int index = 0; index < col; index++) {
-//			canvas.drawLine((index + 1) * blockWidth, 0, (index + 1)* blockWidth, getHeight(), keyBorderPaint);
-//		}
+        canvas.drawColor(0xffcccccc);
 
-        //画水平分割线
-//        for (int index = 0; index < row; index++) {
-//            if (index % 2 != 0) {
-//                canvas.drawLine(0, index * blockHeight, getWidth() * (col - 1) / col, index * blockHeight, keyBorderPaint);
-//            } else {
-//                canvas.drawLine(0, index * blockHeight, getWidth(), index * blockHeight, keyBorderPaint);
-//            }
-//        }
+        //画软键盘的10个数字按钮
+        for (int index = 0; index < softKeys.length; index++) {
+            drawSoftKey(canvas, softKeys[index]);
+        }
 
-		//画软键盘的10个数字按钮
-		for (int index = 0; index < softKeys.length; index++) {
-			drawSoftKey(canvas, softKeys[index]);
-		}
-
-		//创建软键盘的删除按钮
-		if(delBtn==null){
-			delBtn=new SoftKey();
-			delBtn.setKeyType(SoftKey.KeyType.ICON);
-			delBtn.setIcon(R.drawable.ic_softkey_delete);
-			delBtn.setHeight(blockHeight - gapHeight*2);
-			delBtn.setWidth(blockWidth - gapWidth*2);
+        //创建软键盘的删除按钮
+        if (delBtn == null) {
+            delBtn = new SoftKey();
+            delBtn.setKeyType(SoftKey.KeyType.ICON);
+            delBtn.setIcon(R.drawable.ic_softkey_delete);
+            delBtn.setHeight(blockHeight - gapHeight * 2);
+            delBtn.setWidth(blockWidth - gapWidth * 2);
             delBtn.setX(blockWidth / 2 + ((col - 2) % col) * blockWidth);
             delBtn.setY(blockHeight / 2 + ((row - 2) % row) * blockHeight);
 
-		}
+        }
 
-		//画软键盘的删除按钮
-		drawSoftKey(canvas,delBtn);
-
-        //画第10个数字按钮
-        //drawSoftKey(canvas, softKeys[softKeys.length - 1]);
-//        SoftKey key10 = softKeys[softKeys.length - 1];
-//        key10.setHeight(blockHeight);
-//        key10.setWidth(blockWidth);
-//        key10.setX(blockWidth / 2 + ((col - 3) % col) * blockWidth);
-//        key10.setY(blockHeight / 2 + ((row - 2) % row) * blockHeight);
-//        drawSoftKey(canvas, key10);
-
-//        if (confirmBtn == null) {
-//            confirmBtn = new SoftKey();
-//            confirmBtn.setText("确定");
-//            confirmBtn.setHeight(blockHeight - gapHeight*2);
-//            confirmBtn.setWidth(blockWidth - gapWidth*2);
-//            confirmBtn.setX(blockWidth / 2 + ((col - 4) % col) * blockWidth);
-//            confirmBtn.setY(blockHeight / 2 + ((row - 2) % row) * blockHeight);
-//        }
-//
-//        drawSoftKey(canvas, confirmBtn);
+        //画软键盘的删除按钮
+        drawSoftKey(canvas, delBtn);
 
         if (mKeyAdd == null) {
             mKeyAdd = new SoftKey();
             mKeyAdd.setText("+");
-            mKeyAdd.setHeight(blockHeight * 2 - gapHeight*2);
-            mKeyAdd.setWidth(blockWidth  - gapWidth*2);
+            mKeyAdd.setHeight(blockHeight * 2 - gapHeight * 2);
+            mKeyAdd.setWidth(blockWidth - gapWidth * 2);
             mKeyAdd.setX(blockWidth / 2 + ((col - 1) % col) * blockWidth);
             mKeyAdd.setY(blockHeight);
         }
@@ -153,8 +119,8 @@ public class SoftKeySpec1NumLayView extends SoftKeyView {
         if (mKeyMin == null) {
             mKeyMin = new SoftKey();
             mKeyMin.setText("-");
-            mKeyMin.setHeight(blockHeight * 2  - gapHeight*2);
-            mKeyMin.setWidth(blockWidth - gapWidth*2);
+            mKeyMin.setHeight(blockHeight * 2 - gapHeight * 2);
+            mKeyMin.setWidth(blockWidth - gapWidth * 2);
             mKeyMin.setX(blockWidth / 2 + ((col - 1) % col) * blockWidth);
             mKeyMin.setY(blockHeight + ((row - 3) % row) * blockHeight);
         }
@@ -165,12 +131,12 @@ public class SoftKeySpec1NumLayView extends SoftKeyView {
     }
 
     private void drawHold(Canvas canvas) {
-        int holdWidth = blockWidth*4/5;
+        int holdWidth = blockWidth * 4 / 5;
         if (mKeyHold == null) {
             mKeyHold = new SoftKey();
             mKeyHold.setText("全仓");
-            mKeyHold.setHeight(blockHeight - gapHeight*2);
-            mKeyHold.setWidth(holdWidth - gapWidth*2);
+            mKeyHold.setHeight(blockHeight - gapHeight * 2);
+            mKeyHold.setWidth(holdWidth - gapWidth * 2);
             mKeyHold.setX(holdWidth / 2);
             mKeyHold.setY(blockHeight / 2 + ((row - 1) % row) * blockHeight);
         }
@@ -180,8 +146,8 @@ public class SoftKeySpec1NumLayView extends SoftKeyView {
         if (mKeyHold2 == null) {
             mKeyHold2 = new SoftKey();
             mKeyHold2.setText("2/3仓");
-            mKeyHold2.setHeight(blockHeight - gapHeight*2);
-            mKeyHold2.setWidth(holdWidth - gapWidth*2);
+            mKeyHold2.setHeight(blockHeight - gapHeight * 2);
+            mKeyHold2.setWidth(holdWidth - gapWidth * 2);
             mKeyHold2.setX(holdWidth / 2 + holdWidth);
             mKeyHold2.setY(blockHeight / 2 + ((row - 1) % row) * blockHeight);
         }
@@ -191,8 +157,8 @@ public class SoftKeySpec1NumLayView extends SoftKeyView {
         if (mKeyHold3 == null) {
             mKeyHold3 = new SoftKey();
             mKeyHold3.setText("半仓");
-            mKeyHold3.setHeight(blockHeight - gapHeight*2);
-            mKeyHold3.setWidth(holdWidth - gapWidth*2);
+            mKeyHold3.setHeight(blockHeight - gapHeight * 2);
+            mKeyHold3.setWidth(holdWidth - gapWidth * 2);
             mKeyHold3.setX(holdWidth / 2 + 2 * holdWidth);
             mKeyHold3.setY(blockHeight / 2 + ((row - 1) % row) * blockHeight);
         }
@@ -202,8 +168,8 @@ public class SoftKeySpec1NumLayView extends SoftKeyView {
         if (mKeyHold4 == null) {
             mKeyHold4 = new SoftKey();
             mKeyHold4.setText("1/3仓");
-            mKeyHold4.setHeight(blockHeight - gapHeight*2);
-            mKeyHold4.setWidth(holdWidth - gapWidth*2);
+            mKeyHold4.setHeight(blockHeight - gapHeight * 2);
+            mKeyHold4.setWidth(holdWidth - gapWidth * 2);
             mKeyHold4.setX(holdWidth / 2 + 3 * holdWidth);
             mKeyHold4.setY(blockHeight / 2 + ((row - 1) % row) * blockHeight);
         }
@@ -213,8 +179,8 @@ public class SoftKeySpec1NumLayView extends SoftKeyView {
         if (mKeyHold5 == null) {
             mKeyHold5 = new SoftKey();
             mKeyHold5.setText("1/4仓");
-            mKeyHold5.setHeight(blockHeight - gapHeight*2);
-            mKeyHold5.setWidth(holdWidth - gapWidth*2);
+            mKeyHold5.setHeight(blockHeight - gapHeight * 2);
+            mKeyHold5.setWidth(holdWidth - gapWidth * 2);
             mKeyHold5.setX(holdWidth / 2 + 4 * holdWidth);
             mKeyHold5.setY(blockHeight / 2 + ((row - 1) % row) * blockHeight);
         }
@@ -234,7 +200,7 @@ public class SoftKeySpec1NumLayView extends SoftKeyView {
         }
 
         needRefresh = needRefresh || mKeyAdd.isPreessed();*/
-        needRefresh =  needRefresh||mKeyAdd.updatePressed(eventX, eventY);
+        needRefresh = needRefresh || mKeyAdd.updatePressed(eventX, eventY);
         needRefresh = needRefresh || mKeyMin.updatePressed(eventX, eventY);
 
         needRefresh = needRefresh || mKeyHold.updatePressed(eventX, eventY);
@@ -244,14 +210,6 @@ public class SoftKeySpec1NumLayView extends SoftKeyView {
         needRefresh = needRefresh || mKeyHold5.updatePressed(eventX, eventY);
 
         return needRefresh;
-    }
-
-    private void performQuickAdd() {
-
-    }
-
-    private void cancelQuickAdd() {
-
     }
 
     @Override
@@ -315,16 +273,4 @@ public class SoftKeySpec1NumLayView extends SoftKeyView {
         return super.handleTouchUp(eventX, eventY, action);
     }
 
-//    @Override
-//    public SoftKey[] makeSoftKeysRandom(SoftKey[] softKeys) {
-//        int w;
-//        Random rand = new Random();
-//        for (int i = softKeys.length - 1; i > 0; i--) {
-//            w = rand.nextInt(i);
-//            String number = softKeys[i].getText();
-//            softKeys[i].setText(softKeys[w].getText());
-//            softKeys[w].setText(number);
-//        }
-//        return softKeys;
-//    }
 }

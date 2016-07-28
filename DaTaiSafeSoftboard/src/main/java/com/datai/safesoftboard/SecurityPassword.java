@@ -27,7 +27,7 @@ import com.datai.safesoftboard.interfaces.IInputComplete;
  * Created by Administrator on 2016/7/19.
  */
 public class SecurityPassword extends LinearLayout {
-    private final int DEFAULT_PASSWORDLENGTH = 6;
+    private static final int DEFAULT_PASSWORDLENGTH = 6;
     private static final int DEFAULT_TEXTSIZE = 32;
     private static final String DEFAULT_TRANSFORMATION = "●";
     private static final int DEFAULT_LINECOLOR = 0xaa888888;
@@ -48,8 +48,9 @@ public class SecurityPassword extends LinearLayout {
     private IInputComplete completeListener = null;
 
     private TextView[] mViewArr;
+
     public SecurityPassword(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public SecurityPassword(Context context, AttributeSet attrs) {
@@ -69,17 +70,17 @@ public class SecurityPassword extends LinearLayout {
         initView(context, attrs, defStyleAttr);
     }
 
-    private void initView(Context context, AttributeSet attrs, int defStyleAttr){
+    private void initView(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.PasswordView, defStyleAttr, 0);
 
         mTextColor = ta.getColorStateList(R.styleable.PasswordView_pvTextColor);
-        if(mTextColor == null) {
+        if (mTextColor == null) {
             mTextColor = ColorStateList.valueOf(ContextCompat.getColor(getContext(), android.R.color.primary_text_light));
         }
 
-        int textSize = ta.getDimensionPixelSize(R.styleable.PasswordView_pvTextSize,-1);
-        if(textSize != -1){
-            mTextSize =(int) DensityUtils.px2sp(textSize);
+        int textSize = ta.getDimensionPixelSize(R.styleable.PasswordView_pvTextSize, -1);
+        if (textSize != -1) {
+            mTextSize = (int) DensityUtils.px2sp(textSize);
         }
 
         mLineWidth = (int) ta.getDimension(R.styleable.PasswordView_pvLineWidth, DensityUtils.dp2px(1));
@@ -110,7 +111,7 @@ public class SecurityPassword extends LinearLayout {
 
             mViewArr[index] = textView;
 
-            if((index +1) != mPasswordLength) {
+            if ((index + 1) != mPasswordLength) {
                 View dividerView = inflater.inflate(R.layout.divider, null);
                 LayoutParams dividerParams = new LayoutParams(mLineWidth, LayoutParams.MATCH_PARENT);
                 dividerView.setBackgroundDrawable(mLineDrawable);
@@ -154,20 +155,20 @@ public class SecurityPassword extends LinearLayout {
     }
 
 
-    public String getPasswordContent(){
-        if(mContentStr!= null){
+    public String getPasswordContent() {
+        if (mContentStr != null) {
             return mContentStr.toString();
         }
         return "";
     }
 
-    public void appendValue(String value){
-        if(mContentStr != null && mContentStr.length() < mPasswordLength){
+    public void appendValue(String value) {
+        if (mContentStr != null && mContentStr.length() < mPasswordLength) {
             mViewArr[mContentStr.length()].setText(value);
             mContentStr.append(value);
 
-            if(mContentStr.length()== mPasswordLength){
-                if(completeListener != null){
+            if (mContentStr.length() == mPasswordLength) {
+                if (completeListener != null) {
                     completeListener.completeNotification();
                 }
             }
@@ -176,16 +177,16 @@ public class SecurityPassword extends LinearLayout {
         invalidate();
     }
 
-    public void deleteLastValue(){
-        if(mContentStr != null && mContentStr.length() > 0){
-            mViewArr[mContentStr.length()-1].setText("");
-            mContentStr.delete(mContentStr.length()-1,mContentStr.length());
+    public void deleteLastValue() {
+        if (mContentStr != null && mContentStr.length() > 0) {
+            mViewArr[mContentStr.length() - 1].setText("");
+            mContentStr.delete(mContentStr.length() - 1, mContentStr.length());
 
         }
         invalidate();
     }
 
-    public void setCompleteListener(IInputComplete listener){
+    public void setCompleteListener(IInputComplete listener) {
         completeListener = listener;
     }
 
