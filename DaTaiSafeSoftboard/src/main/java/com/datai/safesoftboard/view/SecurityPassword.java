@@ -150,6 +150,8 @@ public class SecurityPassword extends LinearLayout {
             case 3:
                 inputType = InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD;
                 break;
+            default:
+                break;
         }
         view.setInputType(inputType);
         // view.setTransformationMethod(mTransformationMethod);

@@ -234,6 +234,8 @@ public abstract class SoftKeyView extends View implements ISoftKeyBoard {
             case MotionEvent.ACTION_UP:
                 isrefresh = handleTouchUp(touchX, touchY, event.getAction());
                 break;
+            default:
+                break;
         }
         if (isrefresh) {
             invalidate();

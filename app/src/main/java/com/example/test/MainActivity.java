@@ -101,6 +101,8 @@ public class MainActivity extends AppCompatActivity implements IBusinessProcess,
             case R.id.test2:
                 tips = String.format(getString(R.string.business_format1), 0.5f, 2000f, 1000f);
                 break;
+            default:
+                break;
         }
         return tips;
     }
@@ -134,7 +136,6 @@ public class MainActivity extends AppCompatActivity implements IBusinessProcess,
             case BUSINESS_TYPE_INCREASE: {
                 int eType = edit.getType();
                 switch (edit.getId()) {
-
                     case R.id.test1: {
                         long amountValue = 0;
                         if (!TextUtils.isEmpty(edit.getText().toString().trim())) {
@@ -157,6 +158,8 @@ public class MainActivity extends AppCompatActivity implements IBusinessProcess,
                         edit.setSelection(edit.length());
                     }
                     break;
+                    default:
+                        break;
 
                 }
             }
@@ -185,7 +188,8 @@ public class MainActivity extends AppCompatActivity implements IBusinessProcess,
                         edit.setText(decmalFormat.format(pricevalue));
                         edit.setSelection(edit.length());
                         break;
-
+                    default:
+                        break;
                 }
             }
             break;

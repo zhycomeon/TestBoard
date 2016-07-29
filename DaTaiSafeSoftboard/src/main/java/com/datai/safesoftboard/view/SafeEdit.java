@@ -34,13 +34,12 @@ public class SafeEdit extends EditText implements OnDismissListener, IUpdateEnco
     /*
         0 代表输入密码的安全键盘；1 代表输入手数的键盘 ;2 代表输入价格的键盘;3 输入出入金键盘；4 输入出入金密码键盘
          */
-    private final static int SOFTKEYBOARD_TYPE_PASSWORD = 0;
-    private final static int SOFTKEYBOARD_TYPE_PACKAGE = 1;
-    private final static int SOFTKEYBOARD_TYPE_PRICE = 2;
-    private final static int SOFTKEYBOARD_TYPE_INOUTAMOUNT = 3;
-    private final static int SOFTKEYBOARD_TYPE_INOUTPASSWORD = 4;
+    public final static int SOFTKEYBOARD_TYPE_PASSWORD = 0;
+    public final static int SOFTKEYBOARD_TYPE_PACKAGE = 1;
+    public final static int SOFTKEYBOARD_TYPE_PRICE = 2;
+    public final static int SOFTKEYBOARD_TYPE_INOUTAMOUNT = 3;
+    public final static int SOFTKEYBOARD_TYPE_INOUTPASSWORD = 4;
 
-    private String mTwoDecimalFormat;
     protected BaseSoftKeyBoard softKeyBoard;
     protected ViewGroup mRootView;
     protected int mMarginTop = 0;
@@ -75,7 +74,6 @@ public class SafeEdit extends EditText implements OnDismissListener, IUpdateEnco
         //setOnFocusChangeListener(this);
         mEncodeStr = new StringBuilder();
         inputStr = new StringBuilder();
-        mTwoDecimalFormat = context.getString(R.string.str_two_decimal_places);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.EditTextType);
 
         mType = ta.getInteger(R.styleable.EditTextType_inputType, 0);
@@ -141,9 +139,9 @@ public class SafeEdit extends EditText implements OnDismissListener, IUpdateEnco
                         //int contentTop = ((Activity)getContext()).findViewById(Window.ID_ANDROID_CONTENT).getTop();
 
                         int screenHeight = ScreenUtils.getScreenHeight(getContext());
-                        int statusHeight = ScreenUtils.getStatusHeight(getContext());
+                        //int statusHeight = ScreenUtils.getStatusHeight(getContext());
                         int viewY = ScreenUtils.getYOnScreen(SafeEdit.this);
-                        int titleHeight = ((Activity) getContext()).findViewById(Window.ID_ANDROID_CONTENT).getTop();
+                       // int titleHeight = ((Activity) getContext()).findViewById(Window.ID_ANDROID_CONTENT).getTop();
                         int editBottom = viewY + SafeEdit.this.getHeight();
                         if (screenHeight - editBottom < boardHeight) {
                             mMarginTop = boardHeight - screenHeight + editBottom;

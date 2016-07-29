@@ -113,6 +113,8 @@ public class SafeSoftKeyBoard extends BaseSoftKeyBoard implements
                 numLayView.setVisibility(View.INVISIBLE);
                 punctLayView.setVisibility(View.INVISIBLE);
                 break;
+            default:
+                break;
         }
     }
 

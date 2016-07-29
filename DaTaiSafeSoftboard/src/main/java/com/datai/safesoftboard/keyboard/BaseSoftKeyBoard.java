@@ -82,10 +82,10 @@ public class BaseSoftKeyBoard extends PopupWindow implements
      * 显示输入法
      */
     public void show() {
-        if (edit == null) {
-            new IllegalAccessError("safeEdit is null refrence");
+        if (edit != null) {
+            showAsDropDown(decorView, 0, -getHeight());
         }
-        showAsDropDown(decorView, 0, -getHeight());
+
 
         //updateViewByMode(getInputType(edit));
     }

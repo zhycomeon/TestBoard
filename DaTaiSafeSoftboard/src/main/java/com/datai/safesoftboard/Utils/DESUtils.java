@@ -1,5 +1,6 @@
 package com.datai.safesoftboard.Utils;
 
+import android.text.TextUtils;
 import android.util.Base64;
 
 import java.security.Key;
@@ -18,7 +19,7 @@ public class DESUtils {
    // public static final String ALGORITHM_DES = "DES/CBC/PKCS5Padding";
     private static  Key key;// 密钥的key值
     private byte[] DESkey;
-    private byte[] DESIV = { 0x12, 0x34, 0x56, 0x78, (byte) 0x90, (byte) 0xAB,
+    private static byte[] DESIV = { 0x12, 0x34, 0x56, 0x78, (byte) 0x90, (byte) 0xAB,
             (byte) 0xCD, (byte) 0xEF };
     private static AlgorithmParameterSpec iv = null;// 加密算法的参数接口
 
@@ -69,17 +70,18 @@ public class DESUtils {
     public static String encode(String inputStr){
         byte[] byteMi = null;
         byte[] byteMing = null;
-        String outputStr= "";
+        String outputStr= null;
 
         try {
             byteMing = inputStr.getBytes("UTF-8");
             byteMi = getEncCode(byteMing);
             byte[] temp = Base64.encode(byteMi, Base64.DEFAULT);
-            outputStr = new String(temp);
+            return  new String(temp,"UTF8");
         } catch (Exception e) {
         } finally {
             byteMing = null;
             byteMi = null;
+            outputStr="";
         }
         return outputStr;
     }
@@ -104,15 +106,19 @@ public class DESUtils {
     public String decode(String inputString) {
         byte[] byteMing = null;
         byte[] byteMi = null;
-        String strMing = "";
+        String strMing = null;
+        if(TextUtils.isEmpty(inputString)){
+            return strMing;
+        }
         try {
-            byteMi = Base64.decode(inputString.getBytes(), Base64.DEFAULT);
+            byteMi = Base64.decode(inputString.getBytes("UTF-8"), Base64.DEFAULT);
             byteMing = getDesCode(byteMi);
-            strMing = new String(byteMing, "UTF8");
+           return new String(byteMing, "UTF8");
         } catch (Exception e) {
         } finally {
             byteMing = null;
             byteMi = null;
+            strMing="";
         }
         return strMing;
     }
